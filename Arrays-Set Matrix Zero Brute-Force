@@ -1,45 +1,44 @@
 // https://www.codingninjas.com/codestudio/problems/set-matrix-zeros_3846774?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=0
-#include <bits/stdc++.h>
-void makerow(int i,vector<vector<int>> &matrix, int n,int m)
+// https://leetcode.com/problems/set-matrix-zeroes/description/
+
+// solved on both the platforms
+class Solution {
+public:
+void makerow(int i,vector<vector<int>>& matrix, int n, int m)
 {
-	for(int j = 0; j < m; j++)
-	{
-		if(matrix[i][j] != 0){
-			matrix[i][j] = -1;
-		}
-	}
+    for(int j = 0; j < m; j++)
+    {
+        if(matrix[i][j] != 0){
+            matrix[i][j] = -99;
+        }
+    }
 }
-void makecol(int j,vector<vector<int>> &matrix, int n,int m)
+void makecol(int j,vector<vector<int>>& matrix, int n, int m)
 {
-	for(int i = 0; i < n; i++)
-	{
-		if(matrix[i][j] != 0){
-			matrix[i][j] = -1;
-		}
-	}
+    for(int i = 0; i < n; i++)
+    {
+        if(matrix[i][j] != 0){
+            matrix[i][j] = -99;
+        }
+    }
 }
-void setZeros(vector<vector<int>> &matrix)
-{
-	// Write your code here.
-	int m = matrix.size();
-	int n = matrix[0].size();
-	for(int i = 0; i < m; i++)
-	{
-		for(int j = 0; j < n; j++)
-		{
-			if(matrix[i][j] == 0){
-				makerow(i,matrix,m,n);
-				makecol(j,matrix,m,n);
-			}
-		}
-	}
-	for(int i = 0; i < m; i++)
-	{
-		for(int j = 0; j < n; j++)
-		{
-			if(matrix[i][j] == -1){
-				matrix[i][j] = 0;
-			}
-		}
-	}
+    void setZeroes(vector<vector<int>>& matrix) {
+    int m = matrix.size();
+    int n = matrix[0].size();
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (matrix[i][j] == 0) {
+                makerow(i, matrix, m, n);
+                makecol(j, matrix, m, n);
+            }
+        }
+    }
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (matrix[i][j] == -99) {
+                matrix[i][j] = 0;
+            }
+        }
+    }
 }
+};
